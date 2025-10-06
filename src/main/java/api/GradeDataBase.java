@@ -11,7 +11,7 @@ import entity.Team;
 public interface GradeDataBase {
     /**
      * A method that returns the grade of a student in a course.
-     * @param username is the username of the student.
+     * @param username is the token of the student.
      * @param course is the course that the student is taking.
      * @return the grade of the student in the course.
      */
@@ -28,7 +28,7 @@ public interface GradeDataBase {
 
     /**
      * A method that returns the grades of a student in all courses.
-     * @param username is the username of the student.
+     * @param username is the token of the student.
      * @return the grades of the student in all courses.
      * @throws JSONException if an error occurs.
      */

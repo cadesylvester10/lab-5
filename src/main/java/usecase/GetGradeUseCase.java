@@ -15,7 +15,7 @@ public final class GetGradeUseCase {
 
     /**
      * Run the get grade action.
-     * @param username The username.
+     * @param username The token.
      * @param course The course (i.e., CSC207).
      * @return a grade object if successful.
      */
