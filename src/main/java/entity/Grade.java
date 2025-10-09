@@ -18,14 +18,14 @@ public class Grade {
 
     @Override
     public String toString() {
-        return "Grade{" + "token='" + username + '\''
+        return "Grade{" + "token.txt='" + username + '\''
                 + ", course='" + course + '\''
                 + ", grade=" + grade + '}';
     }
 
     /**
-     * Returns the token of the user.
-     * @return the token of the user.
+     * Returns the token.txt of the user.
+     * @return the token.txt of the user.
      */
     public String getUsername() {
         return username;
@@ -67,8 +67,8 @@ public class Grade {
         }
 
         /**
-         * Sets the token of the student.
-         * @param usernameInput the token of the student.
+         * Sets the token.txt of the student.
+         * @param usernameInput the token.txt of the student.
          * @return the GradeBuilder instance.
          */
         public GradeBuilder username(String usernameInput) {

@@ -28,10 +28,10 @@ public class MongoGradeDataBase implements GradeDataBase {
     private static final String NAME = "name";
     private static final String TOKEN = "token";
     private static final String COURSE = "course";
-    private static final String USERNAME = "token";
+    private static final String USERNAME = "username";
     private static final int SUCCESS_CODE = 200;
 
-    // load token from env variable.
+    // load token.txt from env variable.
     public static String getAPIToken() {
         return System.getenv(TOKEN);
     }
@@ -40,12 +40,12 @@ public class MongoGradeDataBase implements GradeDataBase {
     public Grade getGrade(String username, String course) {
 
         // Build the request to get the grade.
-        // Note: The API requires the token to be passed as a header.
-        // Note: The API requires the course and token to be passed as query parameters.
+        // Note: The API requires the token.txt to be passed as a header.
+        // Note: The API requires the course and token.txt to be passed as query parameters.
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
-                .url(String.format("%s/grade?course=%s&token=%s", API_URL, course, username))
+                .url(String.format("%s/grade?course=%s&username=%s", API_URL, course, username))
                 .addHeader(TOKEN, getAPIToken())
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
@@ -65,7 +65,7 @@ public class MongoGradeDataBase implements GradeDataBase {
             }
             else {
                 throw new RuntimeException("Grade could not be found for course: " + course
-                                           + " and token: " + username);
+                                           + " and username: " + username);
             }
         }
         catch (IOException | JSONException event) {
@@ -77,12 +77,12 @@ public class MongoGradeDataBase implements GradeDataBase {
     public Grade[] getGrades(String username) {
 
         // Build the request to get all grades for a user.
-        // Note: The API requires the token to be passed as a header.
-        // Note: The API requires the token to be passed as a query parameter.
+        // Note: The API requires the token.txt to be passed as a header.
+        // Note: The API requires the token.txt to be passed as a query parameter.
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
-                .url(String.format("%s/grade?token=%s", API_URL, username))
+                .url(String.format("%s/grade?username=%s", API_URL, username))
                 .addHeader(TOKEN, getAPIToken())
                 .addHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .build();
